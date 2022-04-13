@@ -3,16 +3,17 @@ import axios from "axios";
 
 function App() {
   const [data,setData] = useState({})
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
   
-  const getLocation = async () => {
-    const newUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=metric`
-      await axios.get(newUrl).then((response) => {
-        setData(response.data)
-        console.log(response.data)
-      })
-  }
+  // const getLocation = async () => {
+  //   const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=metric`;
+  //     await axios.get(apiUrl)
+  //     .then((response) => {
+  //       setData(response.data)
+  //       console.log(response.data)
+  //     });
+  // }
 
   const getRadar = async () => {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -21,15 +22,21 @@ function App() {
     });
     console.log("Latitude is:", lat)
     console.log("Longitude is:", long)
+    if (lat && long !== undefined) {
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=metric`;
+      await axios.get(apiUrl)
+      .then((response) => {
+        setData(response.data)
+        console.log(response.data)
+      });
+    }
   }
 
 
   useEffect(() => {
+    
     getRadar();
-    if(lat && long){
-      getLocation();
 
-    }
   }, [lat, long]);
 
   const removeTime = (date = new Date()) => {
