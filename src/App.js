@@ -31,7 +31,23 @@ function App() {
       });
     }
   }
-
+  const getRadar2 = async () => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+    console.log("Latitude is:", lat)
+    console.log("Longitude is:", long)
+    if (lat && long !== undefined) {
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=imperial `;
+      await axios.get(apiUrl)
+      .then((response) => {
+        setData(response.data)
+        console.log(response.data)
+      });
+    }
+  }
+  
 
   useEffect(() => {
     
@@ -39,6 +55,15 @@ function App() {
 
   }, [lat, long]);
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    getRadar2();
+  }
+  const handleChange2 = (e) => {
+    e.preventDefault();
+    getRadar();
+  }
+  
   const removeTime = (date = new Date()) => {
     return new Date(
       date.getFullYear(),
@@ -53,6 +78,8 @@ function App() {
       <div className="container">
       {data !== undefined &&
         <div className="top">
+          <input type="submit" onClick={handleChange} value="Change to F"></input>
+          <input type="submit" onClick={handleChange2} value="Change to C"></input>
           <div className="location">
             <p>{data.timezone}</p>
             {data.current ? <p>Time {new Date(data.current.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
@@ -120,6 +147,9 @@ function App() {
         <div className="bottom">
           <div className="feels">
             {/* dag +1 */}
+               {/* {data.daily.forEach((d) => {
+                console.log(d.dt)
+            })} */}
             {data.daily ? <p>{new Date(data.daily[1].dt * 1000).getMonth()+ "/" +new Date(data.daily[1].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[1].temp.max.toFixed()}°C</p> : null}
           </div>
@@ -150,8 +180,6 @@ function App() {
   );
 }
 
-     {/* {data.daily.forEach((d) => {
-                console.logd.dt
-            })} */}
+  
 
 export default App;
