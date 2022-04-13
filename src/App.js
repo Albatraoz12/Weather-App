@@ -3,16 +3,8 @@ import axios from "axios";
 
 function App() {
   const [data,setData] = useState({})
-  // const [location,setLocation] = useState('')
-
-  //Lägger till nu ta bort om det ej funkar
-
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
-  // const [lat, setLat] = useState("");
-  // const [long, setLong] = useState("");
-  
-  // const newUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=metric`
   
   const getLocation = async () => {
     const newUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=metric`
@@ -34,53 +26,9 @@ function App() {
 
 
   useEffect(() => {
-    // navigator.geolocation.getCurrentPosition(function(position) {
-      // setLat(position.coords.latitude);
-      // setLong(position.coords.longitude);
-      
-      // const newUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=fc3777ceba883b236fb54a3f1f5bad5f&units=metric`
-      // axios.get(newUrl).then((response) => {
-      //   setData(response.data)
-      //   console.log(response.data)
-      // })
-    // });
-    // console.log("Latitude is:", lat)
-    // console.log("Longitude is:", long)
     getRadar();
     getLocation();
   }, [lat, long]);
-
-
-
-  // axios.get(newUrl)
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       setData(result)
-  //       console.log(result);
-  //     });
-
-  // const getLocation = (event) => {
-  //   if(event.key === 'Enter'){
-  //   axios.get(newUrl).then((response) => {
-  //           setData(response.data)
-  //           console.log(response.data)
-  //         })
-  //     }
-  // }
-
-  //Härifrån
-
-  // const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=fc3777ceba883b236fb54a3f1f5bad5f`
-
-  // const searchLocation = (event) => {
-  //   if(event.key === 'Enter'){
-  //     axios.get(url).then((response) => {
-  //       setData(response.data)
-  //       console.log(response.data)
-  //     })
-  //     setLocation('')
-  //   }
-  // }
 
   const removeTime = (date = new Date()) => {
     return new Date(
@@ -93,14 +41,6 @@ function App() {
 
   return (
     <div className="app">
-     {/* <div className="search">
-        <input
-        value={location}
-        // onChange={event => setLocation(event.target.value)}
-        onKeyPress={getLocation}
-        placeholder="Search City"
-        type="text" />
-      </div> */}
       <div className="container">
       {data !== undefined &&
         <div className="top">
