@@ -19,7 +19,6 @@ function App() {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
-
     console.log("Latitude is:", lat)
     console.log("Longitude is:", long)
   }
@@ -27,7 +26,10 @@ function App() {
 
   useEffect(() => {
     getRadar();
-    getLocation();
+    if(lat && long){
+      getLocation();
+
+    }
   }, [lat, long]);
 
   const removeTime = (date = new Date()) => {
@@ -58,7 +60,7 @@ function App() {
           </div>
         </div>
         }
-        {data.current !== undefined && 
+      {data.current !== undefined && 
         <div className="bottom">
           <div className="feels">
             {data.current ? <p className="bold">{data.current.feels_like.toFixed()}°C</p> : null}
@@ -73,9 +75,9 @@ function App() {
             <p>Wind Speed</p>
           </div>
         </div>
-        }
+      }
           {/* hourly */}
-  {data !== undefined && 
+      {data !== undefined && 
         <div className="bottom">
           <div className="feels">
             {/* timma +1 */}
@@ -103,46 +105,46 @@ function App() {
             {data.hourly ? <p>{data.hourly[4].temp.toFixed()}°C</p> : null}
           </div>
         </div>
-        }
+      }
         
         {/* Temp for 5 days forward */}
 
-        {data !== undefined &&
+      {data !== undefined &&
         <div className="bottom">
           <div className="feels">
-            {/* {data.daily.forEach((d) => {
-                console.logd.dt
-            })} */}
             {/* dag +1 */}
-            {data.daily ? <p>{new Date(data.daily[1].dt * 1000).getMonth()+"/"+new Date(data.daily[1].dt * 1000).getDay()}</p> : null}
+            {data.daily ? <p>{new Date(data.daily[1].dt * 1000).getMonth()+ "/" +new Date(data.daily[1].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[1].temp.max.toFixed()}°C</p> : null}
-            {/* {data.daily ? <img src={`http://openweathermap.org/img/wn/{data.daily.weather[0].icon}@2x.png`} alt="weatherIcon" /> : null} */}
           </div>
           <div className="humidity">
             {/* day +2 */}
-            {data.daily ? <p>{removeTime(new Date(data.daily[2].dt * 1000)).toLocaleTimeString('sv-SE',{ month: 'numeric', day: 'numeric' })}</p> : null}
+            {data.daily ? <p>{new Date(data.daily[2].dt * 1000).getMonth()+ "/" +new Date(data.daily[2].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[2].temp.max.toFixed()}°C</p> : null}
           </div>
           <div className="wind">
             {/* day +3 */}
-            {data.daily ? <p>{removeTime(new Date(data.daily[3].dt * 1000)).toLocaleTimeString('sv-SE',{ month: 'numeric', day: 'numeric' })}</p> : null}
+            {data.daily ? <p>{new Date(data.daily[3].dt * 1000).getMonth()+ "/" +new Date(data.daily[3].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[3].temp.max.toFixed()}°C</p> : null}
           </div>
           <div className="wind">
             {/* day +4 */}
-            {data.daily ? <p>{removeTime(new Date(data.daily[4].dt * 1000)).toLocaleTimeString('sv-SE',{ month: 'numeric', day: 'numeric' })}</p> : null}
+            {data.daily ? <p>{new Date(data.daily[4].dt * 1000).getMonth()+ "/" +new Date(data.daily[4].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[4].temp.max.toFixed()}°C</p> : null}
           </div>
           <div className="wind">
             {/* day +5 */}
-            {data.daily ? <p>{removeTime(new Date(data.daily[5].dt * 1000)).toLocaleTimeString('sv-SE',{ month: 'numeric', day: 'numeric' })}</p> : null}
+            {data.daily ? <p>{new Date(data.daily[5].dt * 1000).getMonth()+ "/" +new Date(data.daily[5].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[5].temp.max.toFixed()}°C</p> : null}
           </div>
         </div>
-        }
+      }
       </div>
     </div>
   );
 }
+
+     {/* {data.daily.forEach((d) => {
+                console.logd.dt
+            })} */}
 
 export default App;
