@@ -95,19 +95,23 @@ function App() {
       <div className="container">
       {data !== undefined &&
         <div className="top">
-          <input type="submit" onClick={handleChange} value="Change to F"></input>
-          <input type="submit" onClick={handleChange2} value="Change to C"></input>
+
           <div className="location">
-            <p>{data.timezone}</p>
+            <h1>{data.timezone}</h1>
             {data.current ? <p>Time {new Date(data.current.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.current ? <p>Sunrise {new Date(data.current.sunrise * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.current ? <p>Sunset {new Date(data.current.sunset * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
           </div>
           <div className="temp">
-            {data.current ? <h1>{data.current.temp.toFixed()}°</h1> : null}
+            {data.current ? <h2>{data.current.temp.toFixed()}°</h2> : null}
+            {data.current ? <img src={`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="description">
           {data.current ? <p>{data.current.weather[0].main}</p> : null}
+          </div>
+          <div className="change">
+          <input type="submit" onClick={handleChange} value="Change to F"></input>
+          <input type="submit" onClick={handleChange2} value="Change to C"></input>
           </div>
         </div>
         }
@@ -134,26 +138,31 @@ function App() {
             {/* timma +1 */}
             {data.hourly ? <p>{new Date(data.hourly[0].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[0].temp.toFixed()}°</p> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[0].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="humidity">
             {/* timma +2 */}
             {data.hourly ? <p>{new Date(data.hourly[1].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[1].temp.toFixed()}°</p> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           {/* timma +3*/}
           <div className="wind">
             {data.hourly ? <p>{new Date(data.hourly[2].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[2].temp.toFixed()}°</p> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[2].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           {/* timma +4 */}
           <div className="wind">
             {data.hourly ? <p>{new Date(data.hourly[3].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[3].temp.toFixed()}°</p> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[3].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           {/* timma +5 */}
           <div className="wind">
             {data.hourly ? <p>{new Date(data.hourly[4].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[4].temp.toFixed()}°</p> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[4].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
         </div>
       }
@@ -174,24 +183,24 @@ function App() {
             {/* day +2 */}
             {data.daily ? <p>{new Date(data.daily[2].dt * 1000).getMonth()+ "/" +new Date(data.daily[2].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[2].temp.max.toFixed()}°</p> : null}
-            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="wind">
             {/* day +3 */}
             {data.daily ? <p>{new Date(data.daily[3].dt * 1000).getMonth()+ "/" +new Date(data.daily[3].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[3].temp.max.toFixed()}°</p> : null}
-            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="wind">
             {/* day +4 */}
             {data.daily ? <p>{new Date(data.daily[4].dt * 1000).getMonth()+ "/" +new Date(data.daily[4].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[4].temp.max.toFixed()}°</p> : null}
-            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="wind">
             {data.daily ? <p>{new Date(data.daily[5].dt * 1000).getMonth()+ "/" +new Date(data.daily[5].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[5].temp.max.toFixed()}°</p> : null}
-            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
+            {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[5].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
         </div>
       }
