@@ -56,8 +56,8 @@ function App() {
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
       });
-      console.log("Latitude is:", lat)
-      console.log("Longitude is:", long)
+      // console.log("Latitude is:", lat)
+      // console.log("Longitude is:", long)
       if (lat && long !== undefined) {
         const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
         await axios.get(apiUrl)
@@ -131,34 +131,31 @@ function App() {
           </div>
         </div>
       }
-          {/* hourly */}
+
+          {/*                     hourly               */}
+
       {data !== undefined && 
         <div className="bottom">
           <div className="feels">
-            {/* timma +1 */}
             {data.hourly ? <p>{new Date(data.hourly[0].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[0].temp.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[0].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="humidity">
-            {/* timma +2 */}
             {data.hourly ? <p>{new Date(data.hourly[1].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[1].temp.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
-          {/* timma +3*/}
           <div className="wind">
             {data.hourly ? <p>{new Date(data.hourly[2].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[2].temp.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[2].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
-          {/* timma +4 */}
           <div className="wind">
             {data.hourly ? <p>{new Date(data.hourly[3].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[3].temp.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.hourly[3].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
-          {/* timma +5 */}
           <div className="wind">
             {data.hourly ? <p>{new Date(data.hourly[4].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
             {data.hourly ? <p>{data.hourly[4].temp.toFixed()}°</p> : null}
@@ -167,11 +164,11 @@ function App() {
         </div>
       }
         
-        {/* Temp for 5 days forward */}
+        {/*                         Temp for 5 days forward                       */}
+
       {data !== undefined &&
         <div className="bottom">
           <div className="feels">
-            {/* dag +1 */}
                {/* {data.daily.forEach((d) => {
                 console.log(d.dt)
             })} */}
@@ -180,19 +177,16 @@ function App() {
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="humidity">
-            {/* day +2 */}
             {data.daily ? <p>{new Date(data.daily[2].dt * 1000).getMonth()+ "/" +new Date(data.daily[2].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[2].temp.max.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="wind">
-            {/* day +3 */}
             {data.daily ? <p>{new Date(data.daily[3].dt * 1000).getMonth()+ "/" +new Date(data.daily[3].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[3].temp.max.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}@2x.png`} alt="weather"></img> : null}
           </div>
           <div className="wind">
-            {/* day +4 */}
             {data.daily ? <p>{new Date(data.daily[4].dt * 1000).getMonth()+ "/" +new Date(data.daily[4].dt * 1000).getDate()}</p> : null}
             {data.daily ? <p>{data.daily[4].temp.max.toFixed()}°</p> : null}
             {data.daily ? <img src={`http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}@2x.png`} alt="weather"></img> : null}
