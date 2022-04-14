@@ -16,14 +16,14 @@ function App() {
   // }
 
   const getCelcius = async () => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    });
-    console.log("Latitude is:", lat)
-    console.log("Longitude is:", long)
+    // navigator.geolocation.getCurrentPosition(function(position) {
+    //   setLat(position.coords.latitude);
+    //   setLong(position.coords.longitude);
+    // });
+    // console.log("Latitude is:", lat)
+    // console.log("Longitude is:", long)
     if (lat && long !== undefined) {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=d795ae7b2825f188eda06d057b56d772&units=metric`;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
       await axios.get(apiUrl)
       .then((response) => {
         setData(response.data)
@@ -32,14 +32,14 @@ function App() {
     }
   }
   const getRadar2 = async () => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    });
-    console.log("Latitude is:", lat)
-    console.log("Longitude is:", long)
+    // navigator.geolocation.getCurrentPosition(function(position) {
+    //   setLat(position.coords.latitude);
+    //   setLong(position.coords.longitude);
+    // });
+    // console.log("Latitude is:", lat)
+    // console.log("Longitude is:", long)
     if (lat && long !== undefined) {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=d795ae7b2825f188eda06d057b56d772&units=imperial `;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=imperial `;
       await axios.get(apiUrl)
       .then((response) => {
         setData(response.data)
@@ -50,7 +50,7 @@ function App() {
   
 
   useEffect(() => {
-
+    // console.log(process.env)
     const getRadar = async () => {
       navigator.geolocation.getCurrentPosition(function(position) {
         setLat(position.coords.latitude);
@@ -59,7 +59,7 @@ function App() {
       console.log("Latitude is:", lat)
       console.log("Longitude is:", long)
       if (lat && long !== undefined) {
-        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=d795ae7b2825f188eda06d057b56d772&units=metric`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
         await axios.get(apiUrl)
         .then((response) => {
           setData(response.data)
