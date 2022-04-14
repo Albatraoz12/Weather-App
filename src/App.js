@@ -6,15 +6,6 @@ function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   
-  // const getLocation = async () => {
-  //   const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=d795ae7b2825f188eda06d057b56d772&units=metric`;
-  //     await axios.get(apiUrl)
-  //     .then((response) => {
-  //       setData(response.data)
-  //       console.log(response.data)
-  //     });
-  // }
-
   const getCelcius = async () => {
     // navigator.geolocation.getCurrentPosition(function(position) {
     //   setLat(position.coords.latitude);
@@ -95,7 +86,6 @@ function App() {
       <div className="container">
       {data !== undefined &&
         <div className="top">
-
           <div className="location">
             <h1>{data.timezone}</h1>
             {data.current ? <p>Time {new Date(data.current.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
@@ -115,6 +105,7 @@ function App() {
           </div>
         </div>
         }
+        
       {data.current !== undefined && 
         <div className="bottom">
           <div className="feels">
