@@ -111,7 +111,7 @@ function App() {
         
       {data.current !== undefined && 
 
-      <Weather weatherData={data}/>
+      <Weather weatherData={data.current}/>
         // <div className="bottom">
         //   <div className="feels">
         //     {data.current ? <p className="bold">{data.current.feels_like.toFixed()}°</p> : null}
@@ -131,7 +131,7 @@ function App() {
           {/*                     hourly               */}
 
       {data !== undefined && 
-      <Hourly hourlyData={data}/>
+      <Hourly hourlyData={data.hourly}/>
         // <div className="bottom">
         //   <div className="feels">
         //     {data.hourly ? <p>{new Date(data.hourly[0].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}

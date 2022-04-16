@@ -4,15 +4,15 @@ import '../index.css';
 const CardExampleCard = ({weatherData}) => (
   <div className="bottom">
           <div className="feels">
-            {weatherData.current ? <p className="bold">{weatherData.current.feels_like.toFixed()}°</p> : null}
+            {weatherData ? <p className="bold">{weatherData.feels_like.toFixed()}°</p> : null}
             <p>Feels Like</p>
           </div>
           <div className="humidity">
-            {weatherData.current ? <p className="bold">{weatherData.current.humidity}%</p> : null}
+            {weatherData ? <p className="bold">{weatherData.humidity}%</p> : null}
             <p>Humidity</p>
           </div>
           <div className="wind">
-          {weatherData.current ? <p className="bold">{weatherData.current.wind_speed.toFixed()} M/S</p> : null}
+          {weatherData ? <p className="bold">{weatherData.wind_speed.toFixed()} M/S</p> : null}
             <p>Wind Speed</p>
           </div>
         </div>
