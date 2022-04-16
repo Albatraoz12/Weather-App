@@ -20,7 +20,7 @@ function App() {
       });
     }
   }
-  const getRadar2 = async () => {
+  const getImperial = async () => {
     if (lat && long !== undefined) {
       const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=imperial `;
       await axios.get(apiUrl)
@@ -33,7 +33,7 @@ function App() {
   
   const handleChange = (e) => {
     e.preventDefault();
-    getRadar2();
+    getImperial();
   }
   const handleChange2 = (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ function App() {
   }
 
   useEffect(() => {
-    const getRadar = async () => {
+    const getLocation = async () => {
       navigator.geolocation.getCurrentPosition(function(position) {
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
@@ -56,7 +56,7 @@ function App() {
       }
     }
     
-    getRadar();
+    getLocation();
 
   }, [lat, long]);
 
