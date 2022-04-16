@@ -31,11 +31,11 @@ function App() {
     }
   }
   
-  const handleChange = (e) => {
+  const Imperial = (e) => {
     e.preventDefault();
     getImperial();
   }
-  const handleChange2 = (e) => {
+  const Celsius = (e) => {
     e.preventDefault();
     getCelcius();
   }
@@ -67,8 +67,8 @@ function App() {
       <>
         <Temp tempData={data} />
         <div className="change">
-        <input type="submit" onClick={handleChange} value="Change to F"></input>
-        <input type="submit" onClick={handleChange2} value="Change to C"></input>
+        <input type="submit" onClick={Imperial} value="Change to F"></input>
+        <input type="submit" onClick={Celsius} value="Change to C"></input>
         </div>
         <Weather weatherData={data.current} />
         <Hourly hourlyData={data.hourly} />
