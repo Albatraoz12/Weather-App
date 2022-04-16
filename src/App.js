@@ -164,7 +164,7 @@ function App() {
         {/*                         Temp for 5 days forward                       */}
 
       {data !== undefined &&
-      <Daily dailyData={data} />
+      <Daily dailyData={data.daily} />
         // <div className="bottom">
         //   <div className="feels">
  
