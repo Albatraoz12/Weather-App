@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 p {
@@ -24,7 +25,7 @@ h2 {
 
 .app {
   width: 100%;
-  height: auto;
+  height: 130vh;
   position: relative;
   background-color: rgba(0,0,0,0.4);
   color: #fff;
