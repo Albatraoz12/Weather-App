@@ -61,7 +61,7 @@ function App() {
   }, [lat, long]);
 
   return (
-    <div className="app">
+    <div className={(typeof data.current != "undefined") ? ((new Date(data.current.dt * 1000) > 20) ? 'appNoone' : 'app') : 'app'}>
       <div className="container">        
       { data !== undefined && 
       <>
