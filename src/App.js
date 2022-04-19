@@ -61,7 +61,7 @@ function App() {
   }, [lat, long]);
 
   return (
-    <div className={(typeof data.current != "undefined") ? ((new Date(data.current.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' }) > 20) ? 'appNoone' : 'app') : 'app'}>
+    <div className={(typeof data.current != "undefined") ? ((new Date(data.current.dt * 1000).getHours()+1 > 20) ? 'appNoone' : 'app') : 'app'}>
       <div className="container">        
       { data !== undefined && 
       <>
