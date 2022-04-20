@@ -3,7 +3,7 @@ import '../index.css';
 
 const dailyData = ({dailyData}) => (
   <div className="bottom">
-          <div className="feels">
+          <div className="daily">
             {dailyData ? <p>{new Date(dailyData[1].dt * 1000).getMonth()+1 + "/" +new Date(dailyData[1].dt * 1000).getDate()}</p> : null}
             {dailyData ? <p>{dailyData[1].temp.max.toFixed()}°</p> : null}
             {dailyData ? <img src={`http://openweathermap.org/img/wn/${dailyData[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
