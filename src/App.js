@@ -5,6 +5,7 @@ import HourlyData from './components/hourly';
 import Daily from './components/daily';
 import Temp from './components/temp';
 
+
 function App() {
   const [data,setData] = useState({})
   const [lat, setLat] = useState("");
