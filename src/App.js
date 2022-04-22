@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Weather from './components/weather';
-import Hourly from './components/hourly';
+import HourlyData from './components/hourly';
 import Daily from './components/daily';
 import Temp from './components/temp';
 
@@ -71,7 +71,7 @@ function App() {
         <input type="submit" onClick={Celsius} value="Change to C"></input>
         </div>
         <Weather weatherData={data.current} />
-        <Hourly hourlyData={data.hourly} />
+        <HourlyData hourlyData={data.hourly} />
         <Daily dailyData={data.daily} />
       </>
       }
