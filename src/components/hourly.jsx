@@ -1,41 +1,23 @@
 import React from 'react';
 import '../index.css';
 
+
 function HourlyData ({hourlyData}) {
-  return(
-   <div className="bottom">
-   <div className="hourly">
-    {hourlyData ? <p>{new Date(hourlyData[0].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {hourlyData ? <p>{hourlyData[0].temp.toFixed()}°</p> : null}
-    {hourlyData ? <img src={`http://openweathermap.org/img/wn/${hourlyData[0].weather[0].icon}@2x.png`} alt="weather"></img> : null}
-    {hourlyData ? <span className='tooltiptext'>{hourlyData[0].weather[0].description}</span> : null}
-  </div>
-  <div className="hourly">
-    {hourlyData ? <p>{new Date(hourlyData[1].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {hourlyData ? <p>{hourlyData[1].temp.toFixed()}°</p> : null}
-    {hourlyData ? <img src={`http://openweathermap.org/img/wn/${hourlyData[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
-    {hourlyData ? <span className='tooltiptext'>{hourlyData[0].weather[0].description}</span> : null}
-  </div>
-  <div className="hourly">
-    {hourlyData ? <p>{new Date(hourlyData[2].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {hourlyData ? <p>{hourlyData[2].temp.toFixed()}°</p> : null}
-    {hourlyData ? <img src={`http://openweathermap.org/img/wn/${hourlyData[2].weather[0].icon}@2x.png`} alt="weather"></img> : null}
-    {hourlyData ? <span className='tooltiptext'>{hourlyData[0].weather[0].description}</span> : null}
-  </div>
-  <div className="hourly">
-    {hourlyData ? <p>{new Date(hourlyData[3].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {hourlyData ? <p>{hourlyData[3].temp.toFixed()}°</p> : null}
-    {hourlyData ? <img src={`http://openweathermap.org/img/wn/${hourlyData[3].weather[0].icon}@2x.png`} alt="weather"></img> : null}
-    {hourlyData ? <span className='tooltiptext'>{hourlyData[0].weather[0].description}</span> : null}
-  </div>
-  <div className="hourly">
-    {hourlyData ? <p>{new Date(hourlyData[4].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {hourlyData ? <p>{hourlyData[4].temp.toFixed()}°</p> : null}
-    {hourlyData ? <img src={`http://openweathermap.org/img/wn/${hourlyData[4].weather[0].icon}@2x.png`} alt="weather"></img> : null}
-    {hourlyData ? <span className='tooltiptext'>{hourlyData[0].weather[0].description}</span> : null}
-  </div> 
- </div> 
- )
+  
+  const firstFive = hourlyData.filter((item, index) => {
+    return index < 5
+  })
+
+  
+  return firstFive.map((item, index) => {
+    return (
+       <div className="hourly">
+       <p>{new Date(item.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p>
+       <p>{item.temp.toFixed()}°</p>
+       <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="weather"></img>
+       <span className='tooltiptext'>{item.weather[0].description}</span>
+     </div>
+    )})
 }
 
 export default HourlyData;

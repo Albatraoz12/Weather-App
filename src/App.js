@@ -72,7 +72,9 @@ function App() {
         <input type="submit" onClick={Celsius} value="Change to C"></input>
         </div>
         <Weather weatherData={data.current} />
+        <div className="bottom">
         <HourlyData hourlyData={data.hourly} />
+        </div>
         <Daily dailyData={data.daily} />
       </>
       }
