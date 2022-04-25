@@ -1,11 +1,6 @@
 import React from 'react';
 import '../index.css';
 
-// Slice 0,5 spara i variabel, nya variabel spara state.
-
-// sedan mapar jag genom staten
-
-
 function HourlyData ({hourlyData}) {
   return(
    <div className="bottom">

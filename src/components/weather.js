@@ -1,7 +1,7 @@
 import React from 'react';
 import '../index.css';
 
-const CardExampleCard = ({weatherData}) => (
+const weather = ({weatherData}) => (
   <div className="bottom">
           <div className="feels">
             {weatherData ? <p className="bold">{weatherData.feels_like.toFixed()}°</p> : null}
@@ -18,4 +18,4 @@ const CardExampleCard = ({weatherData}) => (
         </div>
 )
 
-export default CardExampleCard;
+export default weather;
