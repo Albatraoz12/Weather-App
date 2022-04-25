@@ -113,6 +113,34 @@ h2 {
   color: #f8f8f8;
 }
 
+.hourly {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; */
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.596);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  /* bottom: 40%; */
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.hourly:hover .tooltiptext {
+  visibility: visible;
+}
+
 .change {
   display: flex;
   justify-content: space-evenly;
