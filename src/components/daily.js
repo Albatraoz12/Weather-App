@@ -2,22 +2,6 @@ import React from 'react';
 import '../index.css';
 
 const dailyData = ({dailyData}) => (
-
-    // {hourlyData.map((item, index) => {
-  //   index++;
-  //   if(index <= 5 ) {
-  //   return (
-  //     //skriv ut html
-  //      <div className="bottom">
-  //      <div className="hourly">
-  //      {item ? <p>{new Date(item[index].dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-  //      {item ? <p>{item[index].temp.toFixed()}°</p> : null}
-  //      {item ? <img src={`http://openweathermap.org/img/wn/${item[index].weather[0].icon}@2x.png`} alt="weather"></img> : null}
-  //    </div>
-  //    </div>
-  //   )
-  //   }
-  // })}
   <div className="bottom">
           <div className="daily">
             {dailyData ? <p>{new Date(dailyData[1].dt * 1000).toLocaleDateString([], {weekday: 'long'})}</p> : null}

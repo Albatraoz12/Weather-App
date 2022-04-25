@@ -7,7 +7,7 @@ import Temp from './components/temp';
 
 
 function App() {
-  const [data,setData] = useState({})
+  const [data,setData] = useState(null)
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   
@@ -47,7 +47,7 @@ function App() {
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
       });
-      if (lat && long !== undefined) {
+      if (lat && long) {
         const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
         await axios.get(apiUrl)
         .then((response) => {
@@ -58,13 +58,13 @@ function App() {
     }
     
     getLocation();
-
   }, [lat, long]);
 
+  if (data) {
   return (
+
     <div className={(typeof data.current != "undefined") ? ((new Date(data.current.dt * 1000).getHours()+1 > 20) ? 'appNoone' : 'app') : 'app'}>
       <div className="container">        
-      { data !== undefined && 
       <>
         <Temp tempData={data} />
         <div className="change">
@@ -77,10 +77,11 @@ function App() {
         </div>
         <Daily dailyData={data.daily} />
       </>
-      }
       </div>
-    </div>
-  );
+      </div>
+
+      );
+}
 }
 
 export default App;
