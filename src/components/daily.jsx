@@ -10,10 +10,10 @@ function DailyData ({dailyData}) {
   return firstFive.map((item, index) => {
     return (
      <div key={index} className="daily">
-     {dailyData ? <p>{new Date(dailyData[1].dt * 1000).toLocaleDateString([], {weekday: 'long'})}</p> : null}
-     {dailyData ? <p>{new Date(dailyData[1].dt * 1000).getMonth()+1 + "/" +new Date(dailyData[1].dt * 1000).getDate()}</p> : null}
-     {dailyData ? <p>{dailyData[1].temp.max.toFixed()}°</p> : null}
-     {dailyData ? <img src={`http://openweathermap.org/img/wn/${dailyData[1].weather[0].icon}@2x.png`} alt="weather"></img> : null}
+      <p>{new Date(item.dt * 1000).toLocaleDateString([], {weekday: 'long'})}</p>
+      <p>{new Date(item.dt * 1000).getMonth()+1 + "/" +new Date(item.dt * 1000).getDate()}</p>
+      <p>{item.temp.max.toFixed()}°</p>
+      <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt="weather"></img>
      <span className='tooltiptext'>{item.weather[0].description}</span>
    </div>
     )})
