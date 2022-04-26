@@ -26,7 +26,6 @@ function App() {
       navigator.geolocation.getCurrentPosition(function(position) {
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
-        console.log(position)
       });
       if (lat && long) {
         const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=${units}`;
@@ -34,7 +33,6 @@ function App() {
         .then((response) => {
           setData(response.data)
           console.log(response.data)
-          console.log(apiUrl)
         });
       }
     }
