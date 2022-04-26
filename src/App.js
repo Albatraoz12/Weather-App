@@ -10,35 +10,15 @@ function App() {
   const [data,setData] = useState(null)
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
-  
-  const getCelcius = async () => {
-    if (lat && long !== undefined) {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
-      await axios.get(apiUrl)
-      .then((response) => {
-        setData(response.data)
-        console.log(response.data)
-      });
-    }
-  }
-  const getImperial = async () => {
-    if (lat && long !== undefined) {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=imperial `;
-      await axios.get(apiUrl)
-      .then((response) => {
-        setData(response.data)
-        console.log(response.data)
-      });
-    }
-  }
-  
+  const [units, setUnits] = useState("metric");
+    
   const Imperial = (e) => {
     e.preventDefault();
-    getImperial();
+    setUnits("imperial")
   }
   const Celsius = (e) => {
     e.preventDefault();
-    getCelcius();
+    setUnits("metric")
   }
 
   useEffect(() => {
@@ -46,19 +26,21 @@ function App() {
       navigator.geolocation.getCurrentPosition(function(position) {
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
+        console.log(position)
       });
       if (lat && long) {
-        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=${units}`;
         await axios.get(apiUrl)
         .then((response) => {
           setData(response.data)
           console.log(response.data)
+          console.log(apiUrl)
         });
       }
     }
     
     getLocation();
-  }, [lat, long]);
+  }, [lat, long, units]);
 
   if (data) {
   return (
