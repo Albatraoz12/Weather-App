@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../index.css';
+import './daily.css';
 
 function DailyData ({dailyData}) {
   const firstFive = dailyData.filter((item, index) => {
