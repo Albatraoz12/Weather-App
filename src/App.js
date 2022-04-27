@@ -12,16 +12,19 @@ function App() {
   const [long, setLong] = useState("");
   const [units, setUnits] = useState("metric");
   const [grade, setgrade] = useState("C");
+  const [windSpeed, setWindSpeed] = useState("km/h");
     
   const Imperial = (e) => {
     e.preventDefault();
     setUnits("imperial");
     setgrade("F");
+    setWindSpeed("mp/h")
   }
   const Celsius = (e) => {
     e.preventDefault();
     setUnits("metric");
     setgrade("C");
+    setWindSpeed("km/h")
   }
 
   useEffect(() => {
@@ -41,7 +44,7 @@ function App() {
     }
     
     getLocation();
-  }, [lat, long, units]);
+  }, [lat, long, units, grade]);
 
   if (data) {
   return (
@@ -54,7 +57,7 @@ function App() {
           <input type="submit" onClick={Imperial} value="Change to F"></input>
           <input type="submit" onClick={Celsius} value="Change to C"></input>
         </div>
-        <Weather weatherData={data.current} grade={grade} />
+        <Weather weatherData={data.current} grade={grade} speed={windSpeed} />
         <div className="bottom">
         <HourlyData hourlyData={data.hourly} grade={grade} />
         </div>
