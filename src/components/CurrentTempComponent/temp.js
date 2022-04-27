@@ -1,5 +1,5 @@
 import React from "react";
-import '../index.css';
+import './temp.css';
 
 const temp = ({tempData}) => (
   <div className="top">
