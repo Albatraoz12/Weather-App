@@ -16,6 +16,14 @@ const temp = ({tempData, grade}) => (
   <div className="description">
   <p>{tempData.current.weather[0].main}</p>
   </div>
+  <div className="location">
+    <div>
+      <p>Sunrise {new Date(tempData.current.sunrise * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p>
+    </div>
+    <div>
+      <p>Sunset {new Date(tempData.current.sunset * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> 
+    </div>
+  </div>
 </div>
 )
 
