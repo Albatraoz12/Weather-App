@@ -11,14 +11,17 @@ function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [units, setUnits] = useState("metric");
+  const [grade, setgrade] = useState("C");
     
   const Imperial = (e) => {
     e.preventDefault();
-    setUnits("imperial")
+    setUnits("imperial");
+    setgrade("F");
   }
   const Celsius = (e) => {
     e.preventDefault();
-    setUnits("metric")
+    setUnits("metric");
+    setgrade("C");
   }
 
   useEffect(() => {
@@ -53,7 +56,7 @@ function App() {
         </div>
         <Weather weatherData={data.current} />
         <div className="bottom">
-        <HourlyData hourlyData={data.hourly} />
+        <HourlyData hourlyData={data.hourly} grade={grade} />
         </div>
         <div className="bottom">
         <Daily dailyData={data.daily} />
