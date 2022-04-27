@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Weather from './components/weather';
-import HourlyData from './components/hourly';
+import HourlyData from './components/HourlyComponent/hourly';
 import Daily from './components/DailyComponent/daily';
 import Temp from './components/temp';
 
