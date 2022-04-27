@@ -24,3 +24,15 @@
 .location {
   text-align: center;
 }
+
+.sundirection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.sundirection img {
+  margin-right: 1rem;
+  margin-left: 1.3rem;
+}
