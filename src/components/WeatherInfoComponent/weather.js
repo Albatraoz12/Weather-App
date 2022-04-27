@@ -1,10 +1,10 @@
 import React from 'react';
 import './weather.css';
 
-const weather = ({weatherData}) => (
+const weather = ({weatherData, grade}) => (
   <div className="bottom">
           <div className="feels">
-            <p className="bold">{weatherData.feels_like.toFixed()}°</p>
+            <p className="bold">{weatherData.feels_like.toFixed()}°{grade}</p>
             <p>Feels Like</p>
           </div>
           <div className="humidity">

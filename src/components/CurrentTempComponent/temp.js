@@ -1,20 +1,20 @@
 import React from "react";
 import './temp.css';
 
-const temp = ({tempData}) => (
+const temp = ({tempData, grade}) => (
   <div className="top">
   <div className="location">
     <h1>{tempData.timezone}</h1>
-    {tempData.current ? <p>Time {new Date(tempData.current.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {tempData.current ? <p>Sunrise {new Date(tempData.current.sunrise * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
-    {tempData.current ? <p>Sunset {new Date(tempData.current.sunset * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> : null}
+    <p>Time {new Date(tempData.current.dt * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p>
+    <p>Sunrise {new Date(tempData.current.sunrise * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p>
+    <p>Sunset {new Date(tempData.current.sunset * 1000).toLocaleTimeString('sv-SE',{ hour: '2-digit', minute: '2-digit' })}</p> 
   </div>
   <div className="temp">
-    {tempData.current ? <h2>{tempData.current.temp.toFixed()}°</h2> : null}
-    {tempData.current ? <img src={`http://openweathermap.org/img/wn/${tempData.current.weather[0].icon}@2x.png`} alt="weather"></img> : null}
+    <h2>{tempData.current.temp.toFixed()}°{grade}</h2>
+    <img src={`http://openweathermap.org/img/wn/${tempData.current.weather[0].icon}@2x.png`} alt="weather"></img>
   </div>
   <div className="description">
-  {tempData.current ? <p>{tempData.current.weather[0].main}</p> : null}
+  <p>{tempData.current.weather[0].main}</p>
   </div>
 </div>
 )

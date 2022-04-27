@@ -49,17 +49,17 @@ function App() {
     <div className={(typeof data.current != "undefined") ? ((new Date(data.current.dt * 1000).getHours()+1 > 20) ? 'appNoone' : 'app') : 'app'}>
       <>
       <div className="container">        
-        <Temp tempData={data} />
+        <Temp tempData={data} grade={grade} />
         <div className="change">
           <input type="submit" onClick={Imperial} value="Change to F"></input>
           <input type="submit" onClick={Celsius} value="Change to C"></input>
         </div>
-        <Weather weatherData={data.current} />
+        <Weather weatherData={data.current} grade={grade} />
         <div className="bottom">
         <HourlyData hourlyData={data.hourly} grade={grade} />
         </div>
         <div className="bottom">
-        <Daily dailyData={data.daily} />
+        <Daily dailyData={data.daily} grade={grade} />
         </div>
       </div>
       </>
