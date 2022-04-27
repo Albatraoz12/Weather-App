@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Weather from './components/weather';
+import Weather from './components/WeatherInfoComponent/weather';
 import HourlyData from './components/HourlyComponent/hourly';
 import Daily from './components/DailyComponent/daily';
 import Temp from './components/CurrentTempComponent/temp';
@@ -48,8 +48,8 @@ function App() {
       <div className="container">        
         <Temp tempData={data} />
         <div className="change">
-        <input type="submit" onClick={Imperial} value="Change to F"></input>
-        <input type="submit" onClick={Celsius} value="Change to C"></input>
+          <input type="submit" onClick={Imperial} value="Change to F"></input>
+          <input type="submit" onClick={Celsius} value="Change to C"></input>
         </div>
         <Weather weatherData={data.current} />
         <div className="bottom">

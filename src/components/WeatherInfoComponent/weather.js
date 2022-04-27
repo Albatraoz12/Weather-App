@@ -1,18 +1,18 @@
 import React from 'react';
-import '../index.css';
+import './weather.css';
 
 const weather = ({weatherData}) => (
   <div className="bottom">
           <div className="feels">
-            {weatherData ? <p className="bold">{weatherData.feels_like.toFixed()}°</p> : null}
+            <p className="bold">{weatherData.feels_like.toFixed()}°</p>
             <p>Feels Like</p>
           </div>
           <div className="humidity">
-            {weatherData ? <p className="bold">{weatherData.humidity}%</p> : null}
+            <p className="bold">{weatherData.humidity}%</p>
             <p>Humidity</p>
           </div>
           <div className="wind">
-          {weatherData ? <p className="bold">{weatherData.wind_speed.toFixed()} M/S</p> : null}
+          <p className="bold">{weatherData.wind_speed.toFixed()} M/S</p>
             <p>Wind Speed</p>
           </div>
         </div>
