@@ -49,7 +49,7 @@ function App() {
   if (data) {
   return (
 
-    <div className={(typeof data.current != "undefined") ? ((new Date(data.current.dt * 1000).getHours()+1 > 20) ? 'appNoone' : 'app') : 'app'}>
+    <div className={(typeof data.current != "undefined") ? ((new Date(data.current.sunset * 1000).getHours()+1 <= 20) ? 'appNoone' : 'app') : 'app'}>
       <>
       <div className="container">        
         <Temp tempData={data} grade={grade} />
